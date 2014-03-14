@@ -1,0 +1,13 @@
+{application, signals, [
+	{description, "Signals"},
+	{vsn, "0.1"},
+	{modules, []},
+	{registered, [signals_sup]},
+	{applications, [
+		kernel,
+		stdlib,
+		cowboy
+	]},
+	{mod, {signals_app, []}},
+	{env, []}
+]}.

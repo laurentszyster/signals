@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Signals</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link href="css/normalize-1.1.2.css" rel="stylesheet" type="text/css">
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="js/qunit-1.11.0.js"></script>
+    <script src="js/webrtc_adapter.js"></script>
+    <script src="js/jsbn.min.js"></script>
+    <link href="css/signals.css" rel="stylesheet" type="text/css">
+    <script src="js/signals.js"></script>
+    <script src="js/ui.js"></script>
+</head>
+<body>
+	<header>
+        <div id="signalsLogo">Signals</div>
+    </header>
+    <section id="signalsRight">
+        <div class="signalsControl">
+            <video id="signalsControl" onclick="window.ui.start()" autoplay></video>
+        </div>
+        <div class="signalsConnection">
+            <video autoplay></video>
+        </div>
+    </section>
+    <section id="signalsLeft">
+        <div class="signalsSearch">
+            <input id="signalsSearch" type="text" placeholder="search"/>
+        </div>
+        <div class="signalsVideo">
+            <video id="signalsVideo" autoplay></video>
+        </div>
+    </section>
+	<footer>Copyright 2014 Laurent Szyster</footer>
+    <script>
+    var RTC_CONFIG = {"iceServers": [{"url": "stun:stun.l.google.com:19302"}]};
+    function rtcConnect(peerAddress, inputStream, outputVideo) {
+        var pc = new RTCPeerConnection(RTC_CONFIG),
+            offer = {description: null, candidates: []};
+        function onLocalDescription(description) {
+            console.log(description);
+            offer.description = description;
+            pc.setLocalDescription(description);
+        }
+        function onIceCandidate(evt) {
+            if (evt.candidate) {
+                offer.candidates.push(evt.candidate);
+            } else {
+                signals.post(offer);
+            }
+        }
+        function onAddStream(evt) {
+            window.attachMediaStream(outputVideo, evt.stream);
+            // outputVideo.src = URL.createObjectURL(evt.stream);
+        }
+        if (stream) {
+            pc.addStream(inputStream);
+        }
+        pc.onaddstream = onAddStream;
+        pc.onicecandidate = onIceCandidate;
+        pc.createOffer(onLocalDescription);
+        return pc;
+    }
+    </script>
+</body>
+</html>

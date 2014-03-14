@@ -1,0 +1,2 @@
+postMessage("{{secret}}");
+{% include "../priv/static/js/signals_webworker.js" %}

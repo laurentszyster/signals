@@ -1,0 +1,68 @@
+body>header { 
+	background:black;
+	color:white; 
+	height:3em; 
+	left:0; 
+	position:fixed; 
+	width:100%; 
+	top:0; 
+}
+body>section { 
+	overflow:auto; 
+	padding:3em 0; 
+}
+body>footer { 
+	background:#ccc;
+	color:white;  
+	bottom:0; 
+	height:1em;
+	left:0; 
+	position:fixed; 
+	width:100%; 
+	padding:0.5em; 
+}
+input, button {
+	width: 100%;
+	line-height: 1.5em;
+	padding:0.5em;
+	margin: 0 -0.5em;
+	border: none;
+}
+video { 
+	width: 100%; 
+	display: none; 
+}
+
+#signalsLogo {
+	line-height: 2em;
+	padding:0.5em;
+} 
+div.signalsSearch {
+	margin: 0 0.5em 0 0.5em;
+}
+
+section#signalsLeft {
+	margin-right: -320px;
+	padding-right: 320px;
+	float: right;
+}
+section#signalsRight {
+	width: 320px;
+	float: right;
+}
+button#signalsPlay {
+	width: 100%;
+}
+div.signalsVideo { 
+	width: 640px;
+	height: 480px;
+	background-color: #ddd;
+	float: right;
+}
+div.signalsControl { 
+	background-color: #ddd;
+}
+div.signalsControl > video { 
+	display: block;
+	height: 240px;
+}

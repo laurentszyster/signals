@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html manifest="/installs/{{install}}/cache.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Signals {{version}}</title>
+	<script>signals_parameters={{parameters}};</script>
+	<script ></script>
+</head>
+<body>
+	<header></header>
+	<section></section>
+	<footer></footer>
+	<script></script>
+</body>
+</html>
